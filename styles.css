@@ -16,17 +16,22 @@ body {
 
 /* Play area layout, flexbox to align boxes in center of display */
 .play-area {
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
 }
 
 /* Grid to layout boxes into 2x2 grid */
 .grid {
+    position: relative;
     display: grid;
     grid-template-columns: 16em 16em;
-    grid-template-rows: 0.5fr 1fr 1fr;
+    grid-template-rows: 10em 16em 16em;
     column-gap: 1em;
     row-gap: 1em;
+    align-self: center;
+    bottom: 4em;
 }
 
 /* boxes */
@@ -40,8 +45,10 @@ body {
 }
 
 .box:hover {
-    transform: scale(1.05);
-    border: 14px solid black;
+    /* transform: scale(1.05); */
+    border: 1em solid black;
+    height: 14em;
+    width: 14em;
 }
 
 #one {
