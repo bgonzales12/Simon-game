@@ -1,7 +1,8 @@
 const boxes = $(".box");
 const text = $("#text");
 const accent = "#FFDEAA";
-let round = 10;
+const boxIDS = ["one", "two", "three", "four"];
+let round = 0;
 let playerFail = false;
 let simonList = [];
 let playerList = [];
@@ -16,17 +17,46 @@ boxes.on("mouseup", (event) => {
     $(event.target).css("border-color", "black");
 });
 
-// Game starth
-$(document).on("keypress", () => {
-    alert("game start");
+boxes.on("click", (event) => {
+    const playerChosenColour = event.target.id;
+    playerList.push(playerChosenColour);
+    console.log(playerList);
+    checkAnswer(playerList.length - 1);
+});
+
+function nextSequence() {
+    const randomNumber = Math.floor(Math.random() * 4);
+    const randomChosenColour = boxIDS[randomNumber];
+    simonList.push(randomChosenColour);
+
+    $("#" + randomChosenColour).fadeIn(400).fadeOut(400).fadeIn(400);
+    round++;
     $("#text").text(`Round ${round}`);
+    console.log(simonList);
+}
 
-    for (let i = 1; i <= round; i++) {
-        console.log(i);
-        simonList.push(Math.ceil(Math.random() * 4));
-        console.log(simonList);
+function checkAnswer(currentLevel) {
+    console.log(currentLevel);
+    if (simonList[currentLevel] === playerList[currentLevel]) {
+        if (simonList.length === playerList.length) {
+            console.log("success");
+            $("#text").text("Success!");
+            setTimeout(() => {
+                nextSequence();
+            }, 1000);
+            playerList = [];
+        }
+    } else {
+        console.log("wrong");
+        $("#text").text("Game Over, Press Any Key to Restart");
+        round = 0;
+        playerFail = true;
     }
+}
 
-
+// Game start
+$(document).on("keypress", () => {
+    // alert("game start");
+    nextSequence();
 });
 
