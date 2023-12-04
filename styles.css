@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+body {
+    background-color: #2B4A6F;
+}
+
+/* Main variable text at top of screen */
+#text {
+    text-align: center;
+    font-size: 3em;
+    font-family: "Orbitron", sans-serif;
+    text-transform: capitalize;
+    color: #FFDEAA;
+    grid-column: 1 / 3;
+}
+
+/* Play area layout, flexbox to align boxes in center of display */
+.play-area {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+/* Grid to layout boxes into 2x2 grid */
+.grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 16em 16em;
+    grid-template-rows: 10em 16em 16em;
+    column-gap: 1em;
+    row-gap: 1em;
+    align-self: center;
+    bottom: 4em;
+}
+
+/* boxes */
+.box {
+    height: 15em;
+    width: 15em;
+    border: 8px solid black;
+    border-radius: 20%;
+    justify-self: center;
+    transition: 0.1s ease-in-out;
+}
+
+.box:hover {
+    /* transform: scale(1.05); */
+    border: 1em solid black;
+    height: 14em;
+    width: 14em;
+}
+
+#one {
+    background-color: green;
+}
+
+#two {
+    background-color: red;
+}
+
+#three {
+    background-color: yellow;
+}
+
+#four {
+    background-color: blue;
+}
